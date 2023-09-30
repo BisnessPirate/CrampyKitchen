@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class RecipeController : MonoBehaviour
@@ -26,17 +28,20 @@ public class RecipeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(recipeCount < totalRecipes)
+        timer += Time.deltaTime;
+        if (recipeCount < totalRecipes)
         {
             //We do a double if statement instead of one because we want to stop the timer once we have the max, for now.
-            timer += Time.deltaTime;
             if (timer > recipeTimer) 
             {
                 AddRecipe(CreateRecipe());
                 timer = 0;
             }
             
+        }
+        else if(timer > recipeTimer)
+        {
+            GameOver();
         }
     }
     public void RemovePanel(List<string> recipe)
@@ -94,5 +99,10 @@ public class RecipeController : MonoBehaviour
         recipes.Remove(recipe);
         recipeCount--;
 
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 }
