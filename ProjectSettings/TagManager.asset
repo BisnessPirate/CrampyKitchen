@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Pot
+  - Ingredients
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ingredients
+    uniqueID: 784073905
+    locked: 0
+  - name: Pot
+    uniqueID: 3340493499
     locked: 0
