@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class Pot : MonoBehaviour
@@ -23,7 +21,7 @@ public class Pot : MonoBehaviour
     }
     public void Serve()
     {
-        if (cookingTime > toCookTime)
+        if (cookingTime > toCookTime && cookingTime < 2 * toCookTime)
         {
             CheckIngredients();
         }
@@ -109,7 +107,7 @@ public class Pot : MonoBehaviour
                     if (copyRecipe.Count == 0)
                     {
                         CleanPot();
-                        gameController.GetComponent<RecipeController>().score += 1;
+                        gameController.GetComponent<RecipeController>().score += recipe.Count;
                         gameController.GetComponent<RecipeController>().RemoveRecipe(recipe);
                         break;
                     }

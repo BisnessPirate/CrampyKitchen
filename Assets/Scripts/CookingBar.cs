@@ -1,8 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.Collections;
 using UnityEngine;
 
 public class CookingBar : MonoBehaviour

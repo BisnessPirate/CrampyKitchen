@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GarbageCan : MonoBehaviour
 {
+    public float cost;
+    public GameObject gameController;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,7 @@ public class GarbageCan : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        gameController.GetComponent<RecipeController>().score -= cost;
         Destroy(collision.gameObject);
     }
 }

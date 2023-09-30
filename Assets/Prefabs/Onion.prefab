@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragSpeed: 10
   deadzone: 0.1
-  dragRadius: 0.05
+  dragRadius: 0
 --- !u!114 &7093014325141907665
 MonoBehaviour:
   m_ObjectHideFlags: 0

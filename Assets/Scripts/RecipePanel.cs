@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,6 +50,7 @@ public class RecipePanel : MonoBehaviour
        else if (ingredient == "Onion")
         {
             panel.sprite = ingredientImages[1];
+
         }
     }
 

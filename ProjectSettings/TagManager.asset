@@ -26,7 +26,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - UI2
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Pot
     uniqueID: 3340493499
+    locked: 0
+  - name: UI
+    uniqueID: 2829082551
     locked: 0

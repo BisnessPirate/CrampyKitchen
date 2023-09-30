@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+
 
 public class RecipeController : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class RecipeController : MonoBehaviour
 
     public float recipeTimer;
 
-    public int score;
+    public float score;
 
     private float timer;
     // Start is called before the first frame update
@@ -99,6 +97,11 @@ public class RecipeController : MonoBehaviour
         recipes.Remove(recipe);
         recipeCount--;
 
+    }
+
+    public void LowerScore()
+    {
+        score -= 1.5f;
     }
 
     private void GameOver()
