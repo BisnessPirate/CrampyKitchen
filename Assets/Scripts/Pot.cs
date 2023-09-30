@@ -6,8 +6,8 @@ using UnityEngine;
 public class Pot : MonoBehaviour
 {
     public List<GameObject> Ingredients = new List<GameObject>(); // We probably want to change this to ingredients. And empty it out once we fulfill a recipe!
-    private float cookingTime;
-    private float toCookTime;
+    public float cookingTime;
+    public float toCookTime;
     public GameObject gameController;
     private List<List<string>> recipes;
     // Start is called before the first frame update
@@ -20,9 +20,14 @@ public class Pot : MonoBehaviour
     void Update()
     {
         Cook();
-        CheckIngredients();
     }
-
+    public void Serve()
+    {
+        if (cookingTime > toCookTime)
+        {
+            CheckIngredients();
+        }
+    }
     private void Cook()
     {
         if (Ingredients.Count != 0)
@@ -30,13 +35,13 @@ public class Pot : MonoBehaviour
             cookingTime += Time.deltaTime;
         }
         // We also check if we overcook
-        if (cookingTime >= 2 * toCookTime)
-        {
-            CleanPot(); 
-        }
+        //if (cookingTime >= 2 * toCookTime)
+        //{
+        //    CleanPot(); 
+        //}
     }
 
-    private void CleanPot()
+    public void CleanPot()
     {
         // This fully resets the pot.
         //We might want to make cleaning the pot a button later. Not for now.
@@ -48,6 +53,7 @@ public class Pot : MonoBehaviour
             Destroy(ingredient);
         }
         Ingredients = new List<GameObject>();
+        gameObject.GetComponentInChildren<CookingBar>().ResetBar();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
