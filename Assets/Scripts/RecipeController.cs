@@ -32,7 +32,7 @@ public class RecipeController : MonoBehaviour
             scoreLoss = 0;
         }
         increasedDifficulty = true;
-        AddRecipe(CreateRecipe());
+        NextRecipe();
 
     }
 
