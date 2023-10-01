@@ -46,11 +46,12 @@ public class RecipePanel : MonoBehaviour
        if(ingredient == "Tomato")
         {
             panel.sprite = ingredientImages[0];
+            panel.transform.localScale = new Vector3(1.25f, 1, 0);
         }
        else if (ingredient == "Onion")
         {
             panel.sprite = ingredientImages[1];
-
+            panel.transform.localScale = new Vector3(1.25f, 1, 0) * 2;
         }
     }
 

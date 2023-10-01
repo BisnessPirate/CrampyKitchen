@@ -40,7 +40,7 @@ public class Pot : MonoBehaviour
         //}
     }
 
-    public void CleanPot()
+    private void CleanPot()
     {
         // This fully resets the pot.
         //We might want to make cleaning the pot a button later. Not for now.
@@ -53,6 +53,12 @@ public class Pot : MonoBehaviour
         }
         Ingredients = new List<GameObject>();
         gameObject.GetComponentInChildren<CookingBar>().ResetBar();
+    }
+
+    public void TrashPot()
+    {
+        CleanPot();
+        gameController.GetComponent<RecipeController>().score -= 8 * gameController.GetComponent<RecipeController>().scoreLoss;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -107,9 +113,10 @@ public class Pot : MonoBehaviour
                     //We have this outside of the inner forloop so that the break happens neatly, otherwise unity screams at us.
                     if (copyRecipe.Count == 0)
                     {
-                        CleanPot();
-                        gameController.GetComponent<RecipeController>().score += recipe.Count;
+                        gameController.GetComponent<RecipeController>().score += Ingredients.Count;
+                        gameController.GetComponent<RecipeController>().served += 1;
                         gameController.GetComponent<RecipeController>().RemoveRecipe(recipe);
+                        CleanPot();
                         break;
                     }
                 }

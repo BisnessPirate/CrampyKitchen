@@ -15,6 +15,8 @@ public class RecipeController : MonoBehaviour
     public float recipeTimer;
 
     public float score;
+    public int served;
+    public float scoreLoss;
 
     private float timer;
     // Start is called before the first frame update
@@ -101,11 +103,22 @@ public class RecipeController : MonoBehaviour
 
     public void LowerScore()
     {
-        score -= 1.5f;
+        score -= scoreLoss;
     }
 
     private void GameOver()
     {
+        PlayerPrefs.SetFloat("Score", score);
+        PlayerPrefs.SetInt("Served", served);
+        //if (score > PlayerPrefs.GetFloat("HighScore"))
+        //{
+        //    PlayerPrefs.SetFloat("PrevHighScore", PlayerPrefs.GetFloat("HighScore"));
+        //    PlayerPrefs.SetFloat("HighScore", score);
+        //}
+        //if (served > PlayerPrefs.GetInt("HighServed"))
+        //{
+        //    PlayerPrefs.SetInt("HighServed", served);
+        //}
         SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 }

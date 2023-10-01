@@ -16,4 +16,9 @@ public class Ingredient : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameObject.GetComponent<AudioSource>().Play();
+    }
 }
