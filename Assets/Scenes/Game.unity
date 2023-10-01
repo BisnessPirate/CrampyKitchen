@@ -3511,7 +3511,7 @@ MonoBehaviour:
   - {fileID: 2008201824}
   totalRecipes: 4
   recipeCount: 0
-  recipeTimer: 7
+  recipeTimer: 6
   score: 0
   served: 0
   scoreLoss: 0.5
