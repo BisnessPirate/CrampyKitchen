@@ -8,6 +8,7 @@ public class Pot : MonoBehaviour
     public float toCookTime;
     public GameObject gameController;
     private List<List<string>> recipes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +62,7 @@ public class Pot : MonoBehaviour
             Ingredients.Add(collision.gameObject);
             toCookTime += collision.gameObject.GetComponent<Ingredient>().cookingTime;
         }
-        
+        gameObject.GetComponents<AudioSource>()[1].Play();
     }
 
     /// <summary>
@@ -116,5 +117,9 @@ public class Pot : MonoBehaviour
             }
         }
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameObject.GetComponents<AudioSource>()[0].Play();
     }
 }
