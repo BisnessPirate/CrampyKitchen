@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientName: Onion
-  cookingTime: 3
+  cookingTime: 2
 --- !u!60 &-5977623590133988126
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 3.31, y: 3.59, z: 3.56, w: 2.72}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 10, y: 10}
     newSize: {x: 10, y: 10}

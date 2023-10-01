@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientName: Tomato
-  cookingTime: 3
+  cookingTime: 2
 --- !u!60 &8000910254147018700
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 2.35, y: 2.27, z: 1.7199999, w: 2.52}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 10, y: 10}
     newSize: {x: 10, y: 10}

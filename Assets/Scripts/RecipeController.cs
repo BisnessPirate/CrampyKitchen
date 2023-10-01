@@ -18,28 +18,60 @@ public class RecipeController : MonoBehaviour
     public int served;
     public float scoreLoss;
 
+    public float difficultyIncrease;
+
     private float timer;
+    private bool increasedDifficulty;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        CreateRecipe();
+        if (PlayerPrefs.GetInt("PennyPincher") == -1)
+        {
+            scoreLoss = 0;
+        }
+        increasedDifficulty = true;
+        AddRecipe(CreateRecipe());
+
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
+        NextRecipe();
+        IncreaseDifficulty();
+    }
+
+    private void IncreaseDifficulty()
+    {
+        if (served % 4 == 0 && !increasedDifficulty)
+        {
+            increasedDifficulty = true;
+            recipeTimer -= difficultyIncrease;
+        }
+        else if(served % 4 == 1)
+        {
+            increasedDifficulty = false;
+        }
+
+
+    }
+
+    private void NextRecipe()
+    {
         if (recipeCount < totalRecipes)
         {
             //We do a double if statement instead of one because we want to stop the timer once we have the max, for now.
-            if (timer > recipeTimer) 
+            if (timer > recipeTimer)
             {
                 AddRecipe(CreateRecipe());
                 timer = 0;
             }
-            
+
         }
-        else if(timer > recipeTimer)
+        else if (timer > recipeTimer)
         {
             GameOver();
         }

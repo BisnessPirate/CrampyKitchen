@@ -7,7 +7,10 @@ public class GarbageCan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.GetInt("PennyPincher") == -1)
+        {
+            cost = 0;
+        }
     }
 
     // Update is called once per frame
@@ -20,5 +23,6 @@ public class GarbageCan : MonoBehaviour
     {
         gameController.GetComponent<RecipeController>().score -= cost;
         Destroy(collision.gameObject);
+        gameObject.GetComponent<AudioSource>().Play();
     }
 }

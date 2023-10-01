@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DragMovement : MonoBehaviour
 {
@@ -22,20 +23,31 @@ public class DragMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         dragPosition = transform.position;
-        mousePosition = Input.mousePosition;
-        prevMousePosition = mousePosition;
         body = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MouseVel();
+        //MouseVel();
         Drag();
     }
 
-    private void OnPlayerDrag() {
+    public void OnLook(InputValue value)
+    {
+        Vector2 movement = value.Get<Vector2>();
+        dTime = Time.deltaTime;
+        prevMousePosition = mousePosition;
+        mousePosition = movement; // We want to update this continously so that we can easily get a mouse velocity
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        mousePosition.z = 0; //needed to make sure the position is correct, we work on the z = 0 axis. Check later how to get rid of this using ScreenToWroldPoint, by adding like the z position of the camera.
+        mouseVel = (mousePosition - prevMousePosition) / dTime;
+    }
+
+
+    public void OnPlayerDrag() {
         // We now just need to make usre it only grabs the object if click ON the ingredient.
         if (dragging) {
             dragging = !dragging;
@@ -49,16 +61,6 @@ public class DragMovement : MonoBehaviour
         }
        
     }
-    private void MouseVel()
-    {
-        dTime = Time.deltaTime;
-        prevMousePosition = mousePosition;
-        mousePosition = Input.mousePosition; // We want to update this continously so that we can easily get a mouse velocity
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        mousePosition.z = 0;//needed to make sure the position is correct, we work on the z = 0 axis. Check later how to get rid of this using ScreenToWroldPoint, by adding like the z position of the camera.
-        mouseVel = (mousePosition - prevMousePosition) / dTime;
-    }
-
     private void Drag()
     {
 

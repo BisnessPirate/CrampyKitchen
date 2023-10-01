@@ -66,7 +66,23 @@ public class Pot : MonoBehaviour
         if (collision.gameObject.tag == "Ingredient")
         {
             Ingredients.Add(collision.gameObject);
-            toCookTime += collision.gameObject.GetComponent<Ingredient>().cookingTime;
+            if(Ingredients.Count == 1)
+            {
+                toCookTime += collision.gameObject.GetComponent<Ingredient>().cookingTime;
+            }
+            else 
+            {
+                if (cookingTime < 2 * toCookTime)
+                {
+                    if (cookingTime > toCookTime)
+                    {
+                        cookingTime = toCookTime;
+                    }
+                    toCookTime += collision.gameObject.GetComponent<Ingredient>().cookingTime;
+                }
+            }
+            
+
         }
         gameObject.GetComponents<AudioSource>()[1].Play();
     }

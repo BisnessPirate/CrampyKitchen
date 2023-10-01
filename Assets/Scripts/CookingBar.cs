@@ -26,6 +26,8 @@ public class CookingBar : MonoBehaviour
         if(timer  <= maxTime)
         {
             transform.localScale = new Vector3(timer/maxTime * 0.9f, 0.8f, 0f);
+            Color newColor = new Color(0, 0, 255);
+            sprite.color = newColor;
         }
         else if (timer <= 2 * maxTime) 
         {
